@@ -1,0 +1,39 @@
+﻿body {
+}
+
+h1 {
+    background-color:maroon;
+    height: 100px;
+    font-family:Arial;
+    font-size: 80px;
+    text-align: center;
+    color:white;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+h2 {
+    font-family: Arial;
+    font-size:24px;
+    margin-left:30px;
+    margin-bottom:5px;
+}
+p {
+    margin-left:30px;
+}
+
+.menu {
+    margin-bottom:40px;
+    border-color:black;
+    border-style:Solid;
+    color:black;
+}
+
+.hoverStyle{
+    background-color:lightgreen;
+    color:lightgreen;
+    border-color:Black;
+    border-bottom-style:Solid;
+}
+.ali {
+    width:121px;
+}

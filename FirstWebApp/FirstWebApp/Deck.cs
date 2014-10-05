@@ -1,0 +1,89 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace FirstWebApp
+{
+    public class Deck
+    {
+        public List<Card> Cards = new List<Card>();
+
+        public Deck()
+        {
+            initialize();
+        }
+
+        private void initialize()
+        {
+            for (int j = 1; j <= 4; j++)
+            {
+                for (int i = 2; i <= 14; i++)
+                {
+                    char ch = '0';
+                    if (j == 1)
+                        ch = 'C';
+                    else if (j == 2)
+                        ch = 'D';
+                    else if (j == 3)
+                        ch = 'H';
+                    else if (j == 4)
+                        ch = 'S';
+                    Cards.Add(new Card(i, ch));
+                }
+            }
+        }
+
+        public void Shuffle()
+        {
+            Random random = new Random();
+            List<int> usedNumbers = new List<int>();
+            List<Card> newDeck = new List<Card>();
+            int i = this.Cards.Count;
+            while (Cards.Count > 0)
+            {
+                int newInt = random.Next(0, i);
+                usedNumbers.Add(newInt);
+                if (!newDeck.Contains(Cards[newInt]))
+                {
+                    newDeck.Add(Cards[newInt]);
+                    Cards.Remove(Cards[newInt]);
+                    i--;
+                }
+            }
+            this.Cards = new List<Card>(newDeck);
+        }
+
+        public void Remove(Card card)
+        {
+            this.Cards.Remove(card);
+            int k = 0;
+        }
+
+        public Card removeTopCard()
+        {
+            if (Cards.Count > 0)
+            {
+                Card card = Cards[this.Cards.Count - 1];
+                this.Cards.RemoveAt(this.Cards.Count - 1);
+                return card;
+            }
+            else
+                return null;
+        }
+
+        public override String ToString()
+        {
+            string stringToReturn = "";
+            int i = 1;
+            foreach (Card card in Cards)
+            {
+                stringToReturn += card.ToString() + ", ";
+                if (i % 13 == 0)
+                    stringToReturn += "\n";
+                i++;
+            }
+            return stringToReturn;
+        }
+    }
+}
